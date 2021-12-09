@@ -1,0 +1,350 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>juego</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo"><strong>Programmer</strong> <span>Monster</span></a>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<ul class="links">
+							<li><a href="index.html">Inicio</a></li>
+							<li><a href="https://www.facebook.com/Programmer-Monster-101978555675685/" target="_blank">Siguenos en Facebook</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main" class="alt">
+
+						<!-- One -->
+							<section id="one">
+								<div class="inner">
+									<header class="major">
+										<h1>juego de la serpiente</h1>
+									</header>
+									<span class="image main"><img src="images/imagen_de_la_serpiente.jpg" alt="" /></span>
+									<h1>Bueno, comencemos con HTML y CSS (los cimientos de nuestro juego).</h1>
+									<pre><code>
+&lt;h1&gt;Nokia 3310 snake&lt;/h1&gt;
+&lt;div class="muestraPuntaje"&gt;&lt;/div&gt;
+&lt;div class="cuadrilla"&gt;&lt;/div&gt;
+&lt;div class="boton"&gt;
+    &lt;button class="superior"&gt;superior&lt;/button&gt;
+    &lt;button class="fondo"&gt;fondo&lt;/button&gt;
+    &lt;button class="izquierda"&gt;izquierda&lt;/button&gt;
+    &lt;button class="derecha"&gt;derecha&lt;/button&gt;
+&lt;/div&gt;
+&lt;div class="popup"&gt;
+    &lt;button class="juegaDeNuevo"&gt;Inténtelo de nuevo&lt;/button&gt;     
+&lt;/div&gt;</code></pre>
+									<p>Este código de HTML es sencillo y tiene:
+
+Un div de clase muestra puntaje que mostrará nuestro puntaje.
+Un div de clase cuadrilla en el que se desarrollará el juego (la cuadrilla sería de 10 por 10).
+Una clase buton que contiene un botón para los usuarios que juegan en el teléfono (lo automatizaremos con el teclado para los usuarios de computadora).
+Una clase popup que mostrará el botón "Inténtelo de nuevo".
+Ahora le añadiremos un poco de estilo con CSS.</p>
+<p>
+	<strong>CSS</strong>
+</p>
+<pre><code>      body {
+        background: rgb(212, 211, 211);
+      }
+     .cuadrilla {
+        width: 200px;
+        height: 200px;
+        border: 1px solid red;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .cuadrilla div {
+        width: 20px;
+        height: 20px;
+        /*border:1px black solid;
+box-sizing:border-box*/
+      }
+      .serpiente {
+        background: blue;
+      }
+      .manzana {
+        background: yellow;
+        border-radius: 20px;
+      }
+      .popup {
+        background: rgb(32, 31, 31);
+        width: 100px;
+        height: 100px;
+        position: fixed;
+        top: 100px;
+        left: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }</code></pre>
+      <p>En CSS, la <code>cuadrilla</code>, que es el tablero del juego, tiene una dimensión establecida y un <em><code>display</code> </em>de<em> </em><code>flex</code>. Esto permite que los contenidos (div) de esta cuadrilla estén alineados de forma horizontal como si fuesen elementos en línea en lugar de la disposición normal de los bloques. </p>
+      <p>La propiedad <code>flex wrap</code> mueve los divs hacia la próxima línea para que no traspasen la dimensión del elemento padre establecida (<em>cuadrilla</em>). </p>
+      <p>Crearemos de forma dinámica los contenidos del tablero del juego desde JS pero, podemos darle anchura y altura desde CSS (con el <code>.cuadrilla div</code>). En el ejemplo, incluí comentarios para ayudarte a ver los divs; por lo que, a medida que avancemos dejaremos el código sin comentarios. </p>
+      <p>Las clases <code>serpiente</code> y <code>manzana</code> nos muestran donde está la serpiente y el <em>bonus </em>en el juego, mientras que la clase <code>popup</code> es un div fijo que alberga el botón <code>juegaDeNuevo</code>. </p>
+      <p>En este punto, obtendrás lo siguiente: </p>
+      <figure class="kg-card kg-image-card"><img src="https://www.freecodecamp.org/news/content/images/2020/12/Screenshot--1710-.png" class="kg-image" alt=""></figure>
+      <p><br>Ahora estamos listo para empezar con JavaScript. </p>
+      <h2 id="javascript">JavaScript</h2>
+      <p>Lo primero que tenemos que hacer es definir las variables:</p>
+      <pre><code>let cuadrilla = document.querySelector(".cuadrilla") 
+let popup = document.querySelector(".popup"); 
+let juegaDeNuevo = document.querySelector(".juegaDeNuevo"); 
+let muestraPuntaje = document.querySelector(".muestraPuntaje") 
+let izquierda = document.querySelector(".izquierda") 
+let fondo = document.querySelector(".fondo") 
+let derecha = document.querySelector(".derecha") 
+let arriba = document.querySelector(".superior") 
+let ancho = 10; 
+let indiceActual = 0 
+let indiceManzana = 0 
+let serpienteActual = [2,1,0] 
+let direccion = 1 
+let puntaje = 0 
+let velocidad = 0.8 
+let tiempoInterval = 0 
+let interval = 0</code></pre>
+<p>La variable ancho es la anchura de la cuadrilla<em> </em>(10). Las otras variables tendrán más sentidos a medida que avancemos. Sin embargo, aunque no lo creas, nuestra serpiente en realidad es un arreglo<em> </em>llamado <code>serpienteActual</code>. </p>
+<p>Ahora veamos las funciones:</p>
+<pre><code>document.addEventListener("DOMContentLoaded",function(){ 
+    document.addEventListener("keyup",control) 
+    crearTablero() 
+    comiezaJuego() 
+    juegaDeNuevo.addEventListener("click", repeticion); 
+})</code></pre>
+<p>Hay un <code>eventListener</code> en el objeto del documento llamado <code>DomContentLoaded</code> y este evento se ejecutará una vez que el contenido del HTML se cargue en la pantalla. </p>
+<p>Una vez que esto sucede, establecemos un <code>eventListener</code> en el documento para esperar clics del teclado (después veremos esto con más detalles). Luego, queremos crear el juego de mesa, empezar el juego y prestarle atención a los clics en el botón de <code>juegaDeNuevo</code>.</p>
+<h2 id="funci-n-creartablero">Función crearTablero</h2>
+<pre><code>function crearTablero(){ 
+    popup.style.display = "none"; 
+    for(let i=0;i&lt;100;i++){
+        let div = document.createElement("div") 
+        cuadrilla.appendChild(div) 
+    }
+} </code></pre>
+<p>Como mencioné antes, este es un cuadrilla de 10 por 10 por lo cual vamos a necesitar 100 divs. Entonces, con el fragmento anterior, cerramos el div popup, creamos un nuevo div con un bucle de 100 iteraciones y insertamos a la cuadrilla (juego de meza).</p>
+<p>Inmediatamente se añadirán algunos de los estilos creados en un principio (el .cuadrilla div). Puedes remover los <code>/* *<em>/</em></code><em>del estilo CSS y observarás los divs creados (vuelve agregar los </em><code><em>/</em>* */</code>). </p>
+<p> <strong>Función comenzaJuego</strong></p>
+<pre><code>function comenzaJuego(){ 
+let cuadrados = document.querySelectorAll(".cuadrilla div") 
+manzanaAlAzar(cuadrados) 
+// manzana al azar
+direccion = 1 
+mostrarPuntaje.innerHTML = puntaje 
+tiempoInterval = 1000 
+serpienteActual = [2,1,0] 
+indiceActual = 0 
+serpienteActual.forEach(index =&gt; cuadrados[index].classList.add("serpiente")) 
+interval = setInterval(moverResultado,tiempoInterval) 
+} </code></pre>
+<p>La función <code>comenzaJuego</code><strong> </strong>primero toma todos los divs (ya que estamos creando los divs en el tiempo de ejecución, no podemos incluirlos en la parte superior del código). </p>
+<p>El siguiente paso es seleccionar un lugar dónde ubicar la manzana. Esto se realizará más abajo dentro de la función <code>manzanaAlAzar</code>. La variable <code>direccion</code> se refiere hacia donde se dirige la serpiente -1 para la derecha, -1 para la izquierda y así. </p>
+<p>Con <code>tiempoInterval</code> se establece el tiempo que le toma a la serpiente moverse, mientras que <code>serpienteActual</code> define la ubicación exacta de la serpiente en el <em>cuadrilla </em>(ten en cuenta que básicamente la serpiente está formada por un par de divs con un color particular). </p>
+<p>Para mostrar a nuestra serpiente en la pantalla, realizaremos bucles sobre el arreglo<code>serpienteActual</code> con un <code>forEach</code>. Cada valor obtenido, se utilizará con <code>cuadrados</code>. Recuerda que debes utilizar <code>querySelectorAll</code> para acceder a los cuadrilla divs y, después, podemos tener acceso a ellos como un arreglo que está utilizando números. En este caso, estos son los valores de <code>serpienteActual</code>. </p>
+<p>El siguiente paso insertar el método <code>setInterval</code> (moverResultado, tiempoInterval) en la variable <code>interval</code>. Con esto podemos llamar fácilmente a <code>clearInterval</code> en esa variable.</p>
+<p><code>moverResultado</code> se ejecuta cada 1000ms (1s) y básicamente define qué sucede cuando mueves la serpiente. </p>
+<p><strong>Función moverResultado</strong></p>
+<pre><code>function moverResultado() { 
+let cuadrados = document.querySelectorAll(".cuadrilla div") 
+if(compruebaPorGolpes(squares)) {
+alert("golpeaste algo") 
+popup.style.display="flex" 
+return clearInterval(interval) 
+} else { 
+mueveSerpiente(cuadrados) 
+}
+} </code></pre>
+<p>Como con la función <code>comenzaJuego</code> mencionada previamente, &nbsp;primero obtenemos todos los cuadrilla divs y luego verificamos si la función <code>compruebaPorGolpes</code> devuelve <em>true</em> (verdadero). </p>
+<p>Si lo hace, quiere decir que la serpiente se chocó con algo y aparece el botón "Inténtelo de nuevo" y borra el interval. Si la función devuelve false (falso), la serpiente no chocó con nada y podemos mover la serpiente con la función <code>mueveSerpiente</code>.</p>
+<p>Por lo tanto, cada 1 segundo el juego termina si <code>compruebaPorGolpes</code> &nbsp;es <em>true</em> o la serpiente realiza un movimiento más si <code>compruebaPorGolpes</code> es false. Primero explicaré la función <code>mueveSerpiente</code>. &nbsp;</p>
+<p><strong>Función mueveSerpiente</strong></p>
+<pre><code>function mueveSerpiente(cuadrados){
+let cola = serpienteActual.pop()  
+cuadrados[cola].classList.remove("serpiente") 
+serpienteActual.unshift(serpienteActual[0]+direccion)  
+// movimiento termina aquí
+comeManzanas(cuadrados,cola)  
+cuadrados[serpienteActual[0]].classList.add("serpiente")  
+} </code></pre>
+<p>La función <code>mueveSerpiente</code> recibe un argumento llamado cuadrados lo que no es necesario obtener de nuevo el <code>.cuadrilla div</code> en esta función.</p>
+<p>Lo primeo que necesitamos hacer es quitar el último elemento del arreglo <code>serpienteActual</code> con un pop (este sería la cola y el primer elemento del arreglo sería la cabeza). Básicamente, la serpiente se mueve un paso hacia adelante y sale de la posición en la que estaba anteriormente. Después de esto, insertamos un nuevo valor al principio del arreglo con unShift. </p>
+<p>Supongamos que nuestra serpiente empezó a moverse y se dirige hacia la derecha (direccion = 1). La dirección se añadirá a cabeza <code>serpienteActual</code> y la suma se colocará como el nuevo <code>cabezaDeSerpiente</code>. </p>
+<p>Por ejemplo, si la serpiente estaba en posición <strong><strong>[2,1,0]</strong>, </strong>eliminamos el último elemento y dejamos la posición [2,1]. Luego, tomamos la cabeza que sería el elemento 2, le añadimos la dirección que es el elemento 1 y hacemos que este valor sea el nuevo valor <strong><strong>[3,2,1]</strong> </strong>que mueve nuestra serpiente un paso hacia a la derecha después de un segundo. </p>
+<p>Si queremos mover la serpiente hacia abajo, la dirección se establecerá a el ancho (que es 10) y se insertará en el primer elemento (que es 12 y se pondrá al principio del arreglo) <strong><strong>[12,2,1]</strong></strong>.<p>Por ejemplo, si la serpiente estaba en posición <strong><strong>[2,1,0]</strong>, </strong>eliminamos el último elemento y dejamos la posición [2,1]. Luego, tomamos la cabeza que sería el elemento 2, le añadimos la dirección que es el elemento 1 y hacemos que este valor sea el nuevo valor <strong><strong>[3,2,1]</strong> </strong>que mueve nuestra serpiente un paso hacia a la derecha después de un segundo. </p></p>
+<p>Después, verificamos si la serpiente se comió la manzana y si se visualiza la nueva cabeza de la serpiente en el DOM.</p>
+<p><strong>Función compruebaPorGolpes </strong></p>
+<pre><code>function compruebaPorGolpes(cuadrados) {  
+    if (  
+    (serpienteActual[0] + ancho &gt;=(ancho * ancho) &amp;&amp; direccion === ancho) ||
+    (serpienteActual[0] % ancho === ancho -1 &amp;&amp; direccion ===1) ||   
+    (serpienteActual[0] % ancho === 0 &amp;&amp; direccion === -1) ||   
+    (serpienteActual[0] - ancho &lt;= 0 &amp;&amp; direccion === -ancho) ||
+    cuadrados[serpienteActual[0] + direccion].classList.contains("serpiente") 
+    ) { 
+        return true  
+    } else {  
+    	return false 
+    }
+}   </code></pre>
+<p>La función <code>compruebaPorGolpes</code> tiene una sentencia <em>if</em>. Según la condición definida, podría devolver <em>true</em> (la serpiente se chocó con algo) o <em>false</em>. </p>
+<p>La primera condición es si serpienteActual [0] (la cabeza de la serpiente) + ancho (10) es igual al total del área del ancho (que es ancho * ancho = 100) y la dirección es igual al ancho. </p>
+<p>Ahora asumamos que la cabeza de la serpiente está en posición 97 que es la última capa de nuestro <em>cuadrilla</em>. Si añadieses 10 a 97 (= 107), superaría al total de la <em>cuadrilla </em>que es de 100. Si la dirección de la serpiente continúa hacia abajo, quiere decir que la serpiente se chocó con el borde inferior. </p>
+<p>Si la serpiente estaba en 97 (97 + 10= 107) pero el jugador pudo cambiar la dirección a 1 (tocando la tecla izquierda), no se chocará con nada. </p>
+<p>Si la cabeza de la serpiente está en posición 39 y la dirección todavía es 1 (la serpiente sigue dirigiéndose hacia la pared) y se chocará con el borde derecho. </p>
+<p>Cualquier otra condición es prácticamente lo contrario de las dos condiciones anteriores. La última condición permite que si la cabeza de la serpiente se dirige hacia otro elemento que ya contiene la clase serpiente, la serpiente se chocará con sí misma. </p>
+<p>Por lo que si una de las condiciones mencionadas previamente se cumple, significa que la serpiente se chocó con algo y se devolverá <strong><em>true</em> </strong>(sino <strong><em>false</em></strong>). Y en ese caso, el juego se terminó. Pero si es falso, con <code>mueveSerpiente</code> mueves la serpiente realiza otro movimiento. </p>
+<p><strong>Function comeManzanas</strong></p>
+<pre><code>function comeManzanas(cuadrados,cola){ 
+    if(cuadrados[serpienteActual[0]].classList.contains("manzanas")){ 
+        cuadrados[serpienteActual[0]].classList.remove("manzanas") 
+        cuadrados[cola].classList.add("serpiente") 
+        serpienteActual.push(cola)
+        manzanaAlAzar(cuadrados) 
+        puntaje++ 
+        muestraPuntaje.textContent = puntaje 
+        clearInterval(interval) 
+        tiempoInterval = tiempoInterval * velocidad 
+        interval = setInterval(moverResultado, tiempoInterval) 
+    }
+} </code></pre>
+<p>A la función <code>comeManzana</code> se la llama desde la función <code>mueveSerpiente</code> cada vez que la serpiente realiza un movimiento. </p>
+<p>Recibe dos argumentos cuadrados, <code>.cuadrilla div</code> y cola, básicamente es el valor que apareció de la serpiente en <code>moverResultado</code>. Luego verifica si la próxima posición del movimiento de la serpiente contiene una manzana. </p>
+<p>Si lo hace, simplemente añade la cola que sacamos devuelta al arreglo. Esto sucede porque cada vez que nuestra serpiente se come una manzana, su largo incrementa un valor. </p>
+<p>Después solo tenemos que seleccionar una nueva posición para nuestra manzana con <code>manzanaAlAzar</code> (ver más adelante). Y insertamos un valor de <strong>uno</strong> a nuestra puntuación, se lo mostramos al usuario, y borramos el <code>tiempoInterval</code> (para poder incrementar la velocidad de la serpiente). Por último, establecemos el intervalo de nuevo.</p>
+<p><strong>Función manzanaAlAzar</strong></p>
+<pre><code>function manzanaAlAzar(cuadrados){ 
+do { 
+    appleIndex = Math.floor(Math.random() * cuadrados.length) 
+} while(cuadrados[appleIndex].classList.contains("serpiente")) 
+    cuadrados[appleIndex].classList.add("manzana") 
+} </code></pre>
+<p>Lo que hace <code>manzanaAlAzar</code> es seleccionar un lugar donde ubicar a nuestra manzana al utilizar un bucle <strong>do while. </strong>Primero selecciona una posición al azar con Math.random() en el bucle y verifica si el lugar seleccionado ya contiene la clase serpiente. </p>
+<p>Esto quiere decir que la condición en la sentencia do se ejecutará hasta que encuentre un lugar en el que no esté la serpiente (esto se continua ejecutando hasta que sea <em>true</em>). Una vez que encuentre un lugar, le da a ese lugar la clase manzana. </p>
+<h2 id="establecer-controles">Establecer controles</h2>
+<p>Ahora tenemos que establecer nuestros controles. Vamos a empezar con los usuarios del teclado.</p>
+<pre><code>function control(e){ 
+    if (e.keycode === 39){
+        direccion = 1 // derecha 
+    } else if (e.keycode === 38){ 
+        direccion = -ancho // si presionamos la flecha de arriba, la serpiente irá 10 divs hacia arriba
+    }else if (e.keycode === 37){ 
+        direccion = -1 // izquierda, la serpiente irá un div a la izquierda
+    }else if (e.keycode === 40){
+        direccion = +ancho // la serpiente irá 10 divs hacia abajo desde el div actual
+    } 
+} </code></pre>
+<p>Recuerda que establecimos un eventListener para <strong>keyup. </strong>Esta función se ejecuta inmediatamente al presionar y soltar una tecla. </p>
+<p>Ahora cada botón del teclado tiene un valor llamado keycode (numeros) desde el cual tenemos acceso y nos permite saber qué numero se cliqueó. Básicamente, estaremos atentos a las flechas con sus respectivos valores (keycodes<em>). </em>Gracias a esto, cambiamos la dirección, por ejemplo <strong>-1, 10 </strong>y así. </p>
+<p>Espero que hayan comprendido cómo ahora se podrá mover a la serpiente.</p>
+<p>El siguiente conjunto de botones es para dispositivos móviles y básicamente estamos haciendo lo mismo:</p>
+<pre><code>arriba.addEventListener("click",() =&gt; direccion = -ancho ) 
+fondo.addEventListener("click",() =&gt; direccion = +ancho ) 
+izquierda.addEventListener("click",() =&gt; direccion = -1 ) 
+derecha.addEventListener("click",() =&gt; direccion = 1 )</code></pre>
+<p>Por último, necesitamos crear el div repetición que aparecerá cuando la serpiente se choque con algo. Con este botón, podremos borrar el juego. &nbsp;</p>
+<h2 id="funci-n-repetici-n">Función repetición</h2>
+<pre><code> function repetición() { 
+ cuadrilla.innerHTML="" 
+ crearTablero()   
+ comiezaJuego()  
+ popup.style.display = "none"; 
+ }  </code></pre>
+ <p>Con este fragmento, borramos la cuadrilla (juego de mesa) y ejecutamos las funciones previas.</p>
+ <p>¡Felicidades! Llegaste al final. Aquí tenemos el resultado final:</p>
+ <figure class="kg-card kg-image-card"><img src="https://www.freecodecamp.org/news/content/images/2020/12/Screenshot--1709-.png" class="kg-image" alt=""></figure>
+								
+							     </div>
+							</section>
+
+					</div>
+
+				<!-- Contact -->
+					<section id="contact">
+						<div class="inner">
+							<section>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<label for="name">Name</label>
+											<input type="text" name="name" id="name" />
+										</div>
+										<div class="field half">
+											<label for="email">Email</label>
+											<input type="text" name="email" id="email" />
+										</div>
+										<div class="field">
+											<label for="message">Message</label>
+											<textarea name="message" id="message" rows="6"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send Message" class="primary" /></li>
+										<li><input type="reset" value="Clear" /></li>
+									</ul>
+								</form>
+							</section>
+							<section class="split">
+								<section>
+									<div class="contact-method">
+										<span class="icon solid alt fa-envelope"></span>
+										<h3>Email</h3>
+										<a href="mailto:programermonster@gmail.com" target="blank">programermonster@gmail.com</a>
+									</div>
+								</section>
+								<section>
+									<div class="contact-method">
+										<span class="icon solid alt fa-phone"></span>
+										<h3>Teléfono</h3>
+										<span>(+52) 33 3073 9163</span>
+									</div>
+								</section>
+							</section>
+						</div>
+					</section>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<ul class="icons">
+								<li><a href="https://www.facebook.com/Programmer-Monster-101978555675685/" target="blank" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,740 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>CONSEJOS-HTML</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo"><strong>Programmer</strong> <span>Monster</span></a>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<ul class="links">
+							<li><a href="index.html">Inicio</a></li>
+							<li><a href="https://www.facebook.com/Programmer-Monster-101978555675685/" target="_blank">Siguenos en Facebook</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main" class="alt">
+
+						<!-- One -->
+							<section id="one">
+								<div class="inner">
+									<header class="major">
+										<h1>Generix</h1>
+									</header>
+									<span class="image main"><img src="images/pic11.jpg" alt="" /></span>
+									<body>
+
+  <h2 id="cons_html">Consejos HTML</h2>
+
+  <p>Ahora llega lo interesante. Pongo errores típicos de
+  webs, que veo muy a menudo (también en páginas que
+  hice yo hace tiempo), y cómo corregir las malas costumbres
+  para al final conseguir hacer una web accesible por cualquier
+  navegador, con diseño y contenido por separado, y que sea
+  fácil de mantener.</p>
+
+  <p>Son trucos sueltos y desordenados, y seguro que voy
+  añadiendo más con el tiempo.</p>
+
+  <h3 id="doctype">La primera línea debe ser el DOCTYPE</h3>
+
+  <p>Es obligatorio ponerla, y muy importante. Es para decirle al
+  navegador qué versión de HTML es la que usas en la
+  página. Si no se pone, el navegador no tiene forma de
+  detectarlo, así que entra en modo <em>Quirks</em> (modo
+  chapuzas) e intentará arreglar a su manera las cosas que
+  no entienda, imáginandose qué quiere decir cada
+  etiqueta, y representándolas tanto si son válidas
+  como si no.</p>
+
+  <p>Si se usa una versión de HTML que sea Strict, entonces
+  el navegador usa el modo <em>Standards compliance</em>
+  (cumplimiento de los estándares), y cada etiqueta
+  tendrá el significado normal.</p>
+
+  <p>Por ejemplo, en esta web la primera línea es:</p>
+
+  <div class="ejemplo">
+    <code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd"&gt;</code>
+  </div>
+
+  <p>Recuerda que no es una etiqueta, y por eso es tan rara, va en
+  mayúsculas, y no se cierra.</p>
+
+  <h3 id="estructura">Estructura básica de una web</h3>
+
+  <p>Un ejemplo de lo mínimo que tiene que tener:</p>
+
+  <div class="ejemplo">
+    <code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd"&gt;<br>
+    &lt;html&gt;<br>
+    &lt;head&gt;<br>
+    &nbsp; &lt;title&gt;Mi web. Qué bonita que es mi
+    web.&lt;/title&gt;<br>
+    &lt;/head&gt;<br>
+    &lt;body&gt;<br>
+    Aquí va el contenido.<br>
+    &lt;/body&gt;<br>
+    &lt;/html&gt;</code>
+  </div>
+
+  <h3 id="title">El título, lo más importante</h3>
+
+  <p>Dicen que el <code>&lt;title&gt;</code> es, con mucha
+  diferencia, lo más importante de una web.</p>
+
+  <p>La verdad es que sí que es importante: lo usan los
+  buscadores para indexar la página, pero (aún
+  más importante) lo usamos las personas para saber en
+  qué web entrar cuando un buscador muestra cientos de
+  ellas. Así que elige un buen título, y ni se te
+  ocurra dejarlo en blanco.</p>
+
+  <h3 id="minusculas">Escribe todas las etiquetas en
+  minúsculas</h3>
+
+  <p>Se aceptan tanto mayúsculas como minúsculas,
+  pero es mejor que elijas un estilo fijo y no lo vayas cambiando.
+  Yo he decidido las minúsculas por muchas cosas:</p>
+
+  <ul>
+    <li>es más fácil de leer.</li>
+
+    <li>es más fácil de escribir.</li>
+
+    <li>en XML (y XHTML) sólo se aceptan minúsculas,
+    así que el cambio a XHTML será muy
+    fácil.</li>
+
+    <li>CSS se suele hacer en minúsculas también.</li>
+    
+    <li>una página se comprime mejor cuando se usan
+    etiquetas en minúsculas. Bueno, vale, esto es una
+    razón algo extraña... pero es que
+    algunos servidores web las transfieren comprimidas.</li>
+  </ul>
+
+  <h3 id="abre_cierra">Cierra todo lo que abras (con excepciones),
+  y en orden</h3>
+
+  <p>No está permitido hacer cosas como <code class="bad">&lt;td&gt;&lt;a&gt;enlace&lt;/td&gt;</code>, ni
+  <code class="bad">&lt;ul&gt;&lt;li&gt;uno&lt;li&gt;dos&lt;li&gt;tres&lt;/ul&gt;</code>,
+  ni <code class="bad">&lt;strong&gt;código
+  &lt;em&gt;incorrecto&lt;/strong&gt;&lt;/em&gt;</code>. Eso causa
+  desastres en muchos navegadores: imagina que empiezas un enlace
+  al principio de la página, y no lo cierras nunca. Entonces
+  ¡toda la página forma parte del enlace! y puede
+  salir toda subrayada (es muy asqueroso).</p>
+
+  <p>Hay algunas etiquetas que no se cierran porque no tienen
+  contenido por dentro, como <code>&lt;img&gt;</code> o
+  <code>&lt;br&gt;</code>. En XHTML es obligatorio cerrarlas, y
+  para no tener que escribir <code>&lt;br&gt;&lt;/br&gt;</code>, se
+  permite <code>&lt;br /&gt;</code>. Pero eso es XHTML... de
+  momento en el HTML no cierres <code>&lt;br&gt;</code> y ya
+  está.</p>
+
+  <h3 id="entrecomilla">Los atributos, siempre entrecomillados</h3>
+
+  <p>En realidad sólo es obligatorio poner entre comillas
+  los atributos que tienen caracteres no alfanuméricos, por
+  ejemplo en <code>&lt;body bgcolor="#E099F5"&gt;</code> (por el
+  <code>#</code>).</p>
+
+  <p>Pero es mucho mejor que las pongas siempre, porque así
+  no hay que pensar cuándo sí y cuándo no, y
+  además es como hay que hacerlo en XML y XHTML. De todas
+  formas, no hace falta poner casi atributos en el HTML
+  correcto.</p>
+
+  <p>Puedes usar varios tipos de comillas, pero lo más
+  normal es la comilla doble, <code>"</code>.</p>
+
+  <h3 id="charset">Especifica el juego de caracteres (charset)</h3>
+
+  <p>Tu servidor ya tiene que estar preparado para mandar el tipo
+  MIME del documento (que debe ser <code>text/html</code>) y la
+  codificación (que es ISO-8859-1 para el español
+  o ISO-8859-15 si usas el símbolo del euro, €).
+  Pero, por si acaso al navegador no le llega esta
+  información, puedes decírsela con esta etiqueta
+  dentro del <code>&lt;head&gt;</code>:</p>
+
+  <div class="ejemplo">
+    <code>&lt;meta content="text/html; charset=utf-8"
+    http-equiv="content-type"&gt;</code>
+  </div>
+
+  <p>Así también se le dice el juego de caracteres a
+  usar, y te aseguras de que los acentos se verán bien.
+  Otro <em>character encoding</em> es UTF-8 (Unicode), que permite representar
+  casi cualquier letra (japonesas, tibetanas, consonantes acentuadas, ...).
+  Lo malo es que aún hay navegadores que se confunden (ya que algunos caracteres
+  ocupan más de un byte), pero es el formato único al que habrá que migrar
+  para evitar problemas con las codificaciones.</p>
+
+  <h3 id="no_font">No uses <code>&lt;font&gt;</code></h3>
+
+  <p>...para nada. No es necesaria en absoluto. Con CSS se puede
+  hacer mucho mejor, eligiendo los colores/fuente/tamaño una
+  sola vez, y aplicándolos a todos los elementos a la
+  vez.</p>
+
+  <p>Si quieres dar un estilo especial sólo a unas letras o
+  palabras, mira el siguiente consejo:</p>
+
+  <h3 id="span_y_div">Dar formato a un trozo de texto o un trozo de
+  página: <code>&lt;span&gt;</code> y
+  <code>&lt;div&gt;</code></h3>
+
+  <p>Estas etiquetas las vas a usar mucho. Por sí solas no
+  hacen nada; tienes que darles estilo.</p>
+
+  <p>Primero, una explicación importante sobre el
+  cómo funciona el HTML:</p>
+
+  <p>Cada elemento HTML es (básicamente) de tipo
+  <em>inline</em> o <em>block</em>. Los elementos de tipo
+  <em>inline</em> siguen el flujo del texto, y se pueden meter como
+  si fueran una palabra más. Por ejemplo, las
+  imágenes y los enlaces se comportan así, porque
+  puedo poner <a href="https://www.danielclemente.com/" class="borde">un enlace</a> como si fueran palabras normales (le he
+  puesto un borde para que veas en qué consiste el
+  elemento).</p>
+
+  <p>En cambio, un elemento de tipo <em>block</em> rompe el flujo
+  de texto: hace que se le dedique una línea nueva y toda la
+  anchura de la página. Un ejemplo de esto son las cabeceras
+  (<code>&lt;h1&gt;</code>, etc): no pueden compartir espacio con
+  otro elemento. Los párrafos también son así:
+  fíjate qué pasa si pongo</p>
+  <!-- Lo siento por cerrar el párrafo anterior; si no no es válido. -->
+
+  <p class="borde">un párrafo</p>
+
+  <p>en medio de una línea.</p>
+
+  <p>Bueno, pues el <code>&lt;span&gt;</code> es <em>inline</em> y
+  el <code>&lt;div&gt;</code> es <em>block</em>. Cuando quieras dar
+  formato a unas cuantas palabras, sin romper el flujo del texto,
+  mete esas palabras dentro del <code>&lt;span&gt;</code>, y cuando
+  quieras formatear un montón de elementos juntos (un trozo
+  de página, de una línea o varias), mételo
+  todo dentro de un <code>&lt;div&gt;</code>.</p>
+
+  <p>Un ejemplo (y el cómo queda):</p>
+
+  <div class="ejemplo">
+    <code>&lt;p&gt;Puedes aplicar &lt;span style="font-size: 120%;
+    text-transform: uppercase; color: blue;
+    cursor:pointer;"&gt;muchos efectos&lt;/span&gt; a un trozo de
+    texto sin necesidad de usar la etiqueta font.&lt;/p&gt;<br>
+    &lt;div style="text-align: center; border: 3px dashed orange;
+    background: yellow; font-style:italic;"&gt;<br>
+    &lt;p&gt;Y puedes formatear todo un trozo de página a la
+    vez...&lt;/p&gt;<br>
+    &lt;p&gt;si lo metes dentro de un div.&lt;/p&gt;<br>
+    &lt;/div&gt;</code>
+  </div>
+
+  <p>Puedes aplicar <span style="font-size: 120%; text-transform: uppercase; color: blue; cursor: pointer;">
+  muchos efectos</span> a un trozo de texto sin necesidad de usar
+  la etiqueta font.</p>
+
+  <div style="text-align: center; border: 3px dashed orange; background: yellow; font-style: italic;">
+  <p>Y puedes formatear todo un trozo de página a la
+  vez...</p>
+
+    <p>si lo metes dentro de un div.</p>
+  </div>
+
+  <p>Recuerda que no es cómodo usar el atributo
+  <code>style</code>. Es mejor definir clases (atributo
+  <code>class</code>) y luego darles estilo a todos los de la misma
+  clase a la vez. Lo explico en otra sección.</p>
+
+  <h3 id="no_br">Evita el <code>&lt;br&gt;</code>, usa
+  párrafos: <code>&lt;p&gt;</code></h3>
+
+  <p>El contenido de casi cualquier web se organiza por
+  párrafos (mira ésta, por ejemplo). Los
+  párrafos no hay que separarlos por saltos de línea
+  (<code>&lt;br&gt;</code>), sino que sólo con poner
+  <code>&lt;p&gt;</code> al principio y <code>&lt;/p&gt;</code> al
+  final ya quedan bien ordenados y con la separación
+  adecuada.</p>
+
+  <p>Muy pocas veces hay que escribir un salto de línea de
+  verdad... sólo se me ocurre el caso de que quieras poner
+  un listado del código fuente de un programa: consiste en
+  varias líneas (incluso algunas en blanco), una debajo de
+  otra. Cada línea no es un párrafo por sí
+  sola, así que sería más inteligente bajar a
+  la siguiente con un <code>&lt;br&gt;</code>. Pero en general no
+  hace falta; es mucho más cómodo usar
+  párrafos.</p>
+
+  <h3 id="no_nbsp">No hace falta usar <code>&amp;nbsp;</code> para
+  hacer márgenes</h3>
+
+  <p>Para hacer que la primera línea de cada párrafo
+  quede un poquito más a la derecha, muchos ponen tres
+  espacios: <code>&amp;nbsp;&amp;nbsp;&amp;nbsp;</code>. Eso es una
+  chapuza; es mejor usar párrafos y aplicarles la siguiente
+  hoja de estilos:</p>
+
+  <div class="ejemplo">
+    <code>p {text-indent: 20px}</code>
+  </div>
+
+  <p>Con esto, <strong>todos</strong> los párrafos
+  tendrán la primera línea 20 píxels a la
+  derecha del margen. Elige bien las unidades; ponlas en cm. o mm.
+  si te aclaras más, aunque quizás iría mejor
+  no usar unidades absolutas sino en relación al tipo de
+  letra actual.</p>
+
+  <p>Entonces, ¿cuándo hay que usar
+  <code>&amp;nbsp;</code>? Pues sólo cuando quieras dibujar
+  un espacio en blanco. Cuando haces un diseño, no creo que
+  pienses <q>aquí me iría bien poner cinco
+  espacios...</q>, sino <q>esto lo quiero un poco más a la
+  derecha</q>, y para eso se usa el CSS. Si alguna vez realmente
+  necesitas poner los cinco espacios (ni 4 ni 6), pon
+  <code>&amp;nbsp;</code> cinco veces.</p>
+
+  <h3 id="no_center"><code>&lt;center&gt;</code> no existe</h3>
+
+  <p>La etiqueta <code>&lt;center&gt;</code> y el atributo
+  <code>align</code> (como en <code>&lt;table
+  align="center"&gt;</code>) no dejan muy claro su funcionamiento
+  (¿deben alinearse ellos dentro de la página, o
+  centrar el texto que viene a continuación?). Con CSS se
+  puede especificar mejor los temas de centrado, pero hay que
+  entender un poco qué es lo que queremos centrar, y
+  recordar lo del tipo de los elementos (<em>block</em> o
+  <em>inline</em>).</p>
+
+  <p>Para centrar el contenido que hay dentro de un elemento (por
+  ejemplo, todo el texto de dentro de un <code>&lt;div&gt;</code>),
+  basta con el estilo <code>text-align:center;</code>. Por
+  ejemplo:</p>
+
+  <div class="ejemplo">
+    <code>&lt;div style="border:1px solid green;
+    background:rgb(50,240,60); width:60%;
+    text-align:center;"&gt;<br>
+    Este texto está centrado.<br>
+    &lt;/div&gt;</code>
+  </div>
+
+  <p>Y queda:</p>
+
+  <div style="border:1px solid green; background: rgb(50, 240, 60); width: 60%; text-align: center;">
+  Este texto está centrado.
+  </div>
+
+  <p>En cambio, si lo que quieres centrar es el propio
+  <code>&lt;div&gt;</code> (u otro elemento tipo <em>block</em>), y
+  no su contenido, tienes que darle una anchura (con
+  <code>width:75%;</code>), y decir que el navegador se ocupe
+  automáticamente de los márgenes izquierdo y
+  derecho. Se hace con <code>margin-left:auto;
+  margin-right:auto;</code>, o, abreviado: <code>margin: 0
+  auto;</code>. Las dos formas hacen lo mismo, pero si te interesa
+  entender por qué la corta funciona, busca
+  información sobre <q>CSS <em>shorthand</em></q>.</p>
+
+  <p>Ejemplo para alinear un bloque:</p>
+
+  <div class="ejemplo">
+    <code>&lt;div style="border:1px solid green;
+    background:rgb(50,240,60); width:60%; margin: 0 auto;"&gt;<br>
+    Ahora es el div el que está centrado, y no su
+    contenido.<br>
+    &lt;/div&gt;</code>
+  </div>
+
+  <p>Y queda:</p>
+
+  <div style="border:1px solid green; background: rgb(50, 240, 60); width: 60%; margin: 0 auto;">
+  Ahora es el div el que está centrado, y no su contenido.
+  </div>
+
+  <p>Así ya sabes centrar tanto el contenido de un elemento,
+  como cualquier elemento de tipo <em>block</em>.
+  ¿Cómo se centraría un elemento
+  <em>inline</em>, como una imagen o un <code>&lt;span&gt;</code>?
+  Pues podrías meterla dentro de un <code>&lt;div&gt;</code>
+  y usar <code>text-align:center; margin: 0 auto;</code> combinando
+  los dos métodos anteriores, pero es más
+  fácil pedirle que se comporte como un bloque, con
+  <code>display:block; margin: 0 auto;</code> (así te
+  ahorras el <code>&lt;div&gt;</code>).</p>
+
+  <h3 id="no_align">El atributo <code>align</code> no existe</h3>
+
+  <p>Lee el consejo anterior para ver cómo centrar
+  cosas.</p>
+
+  <p>He visto que mucha gente usaba el <code>align="center"</code>
+  en los <code>&lt;td&gt;</code>, para centrar el contenido de las
+  celdas. Es mucho más fácil con CSS:</p>
+
+  <div class="ejemplo">
+    <code>td {text-align:center;}</code>
+  </div>
+
+  <p>¡Y ya están todas las celdas de todas las tablas
+  centradas! Si te interesa escoger sólo algunas celdas,
+  estudia lo de darles nombre y clase (atributos <code>id</code> o
+  <code>class</code>, que explico más adelante).</p>
+
+  <h3 id="no_nobr"><code>&lt;nobr&gt;</code> no es necesario</h3>
+
+  <p>Algunos navegadores hacen que el texto entre un
+  <code>&lt;nobr&gt;</code> y <code>&lt;/nobr&gt;</code> no se
+  separe en varias líneas si la ventana en la que se muestra
+  es pequeña.</p>
+
+  <p>En realidad, cuando usas esta etiqueta es porque quieres
+  dibujar un espacio en blanco (quieres que sea como una letra
+  más de una palabra, y asegurarte de que se dibuja en
+  pantalla como las demás), y lo correcto sería usar
+  el <code>&amp;nbsp;</code> y olvidarse del
+  <code>&lt;nobr&gt;</code>.</p>
+
+  <p>Lo bueno es que se puede hacer más fácil por
+  CSS:</p>
+
+  <div class="ejemplo">
+    <code>table tbody tr th {white-space:nowrap;}</code>
+  </div>
+
+  <p>Así, todas las cabeceras de las tablas ocuparán
+  siempre una sola línea.</p>
+
+  <h3 id="em_strong">No uses <code>&lt;i&gt;</code>,
+  <code>&lt;b&gt;</code>, <code>&lt;u&gt;</code>, sino
+  <code>&lt;em&gt;</code>, <code>&lt;strong&gt;</code> y CSS.</h3>
+
+  <p>Cuando estás escribiendo algo y llegas a una palabra
+  especial, supongo que no pensarás <q>ay, esto tiene que ir
+  cursiva</q> sino en <q>quiero resaltar esto</q>. Lo de ponerlo en
+  negrita, cursiva o subrayado forma parte del diseño, y ya
+  hemos quedado en que el diseño se hará al final,
+  cuando esté todo escrito.</p>
+
+  <p>De momento, lo que tienes que hacer es marcar las palabras a
+  las que quieres dar énfasis con la etiqueta
+  <code>&lt;em&gt;</code>, y si quieres dar un énfasis
+  aún mayor, <code>&lt;strong&gt;</code>. Lo normal es que
+  los navegadores representen el <em>énfasis</em> en cursiva
+  y el <strong>énfasis mayor</strong> en negrita, pero lo
+  bueno es que puedes cambiarlo mediante el CSS (incluso
+  podrías desactivarlo).</p>
+
+  <p>Cuando realmente quieras especificar un estilo concreto,
+  puedes usar <code>font-weight:bold</code> para <span style="font-weight: bold;">negrita</span>,
+  <code>font-style:italic</code> para <span style="font-style: italic;">cursiva</span>,
+  <code>text-decoration:underline</code> para <span style="text-decoration: underline;">subrayado</span>, y muchas
+  más cosas, como <code>text-decoration:overline</code> para
+  <span style="text-decoration: overline;">una línea por
+  encima</span>, o <code>text-decoration:line-through</code> para
+  <span style="text-decoration: line-through;">tachado</span>.</p>
+
+  <h3 id="amps">Cuidado con los &amp; en las direcciones (URI)</h3>
+
+  <p>Para poner caracteres especiales (como acentos) hay que
+  escribir cosas como <code>&amp;aacute;</code> (se llaman
+  <q>entidades</q>). Empiezan por <code>&amp;</code> (en inglés,
+  <q>ampersand</q>; <q>y</q> o <q>et</q> en español)
+  y acaban por <code>;</code>. Por eso, cada vez
+  que el navegador encuentra un <code>&amp;</code>, se cree que vas
+  a escribir una entidad, y ésa es la razón por la
+  que hay que poner <code>&amp;amp;</code> para dibujar un
+  ampersand de verdad en la página.</p>
+
+  <p>Pues las URIs (y URLs) no son una excepción: si una
+  dirección cualquiera (de una imagen, enlace, o lo que sea)
+  tiene ampersands en su interior, los debes escribir como
+  <code>&amp;amp;</code>. Por ejemplo, si quieres poner este enlace
+  en tu web:
+  <code>http://www.google.es/search?hl=es&amp;q=142857</code>,
+  tienes que hacer esto:</p>
+
+  <div class="ejemplo">
+    <code>&lt;a
+    href = "http://www.google.es/search?hl=es&amp;amp;q=142857"&gt;
+    Informaci&amp;oacute;n sobre el 142857&lt;/a&gt;</code>
+  </div>
+
+  <p>Tranquilo, que ni siquiera los navegadores viejos o simples se
+  van a confundir. Precisamente esto les ayuda a no liarse con las
+  <em>entities</em>.</p>
+
+  <h3 id="usa_listas">Aprovecha las listas</h3>
+
+  <p>Las listas (sobre todo <code>&lt;ul&gt;</code> y
+  <code>&lt;ol&gt;</code>) son los elementos con los más se
+  puede jugar al aprender CSS. Sólo con HTML son muy
+  aburridas, pero añadiendo pocos estilos se pueden hacer
+  maravillas como menús de navegación, botones,
+  pestañas, tablas, y muchas más cosas.</p>
+
+  <p>En las páginas web abundan muchas listas, aunque no te
+  hayas dado cuenta. Son una forma muy buena de estructurar la
+  información, aparte de ser sencillas y de verse bien en
+  todos los navegadores.</p>
+
+  <p>Puedes mirar páginas como <a href="http://css.maxdesign.com.au/listamatic/">Listamatic</a> para
+  probar las posibilidades de las listas.</p>
+
+  <h3 id="identifica">Identificar elementos: <code>class</code> e
+  <code>id</code></h3>
+
+  <p>Muchas veces querrás aplicar un estilo a varios
+  elementos, pero no a todos a la vez; por ejemplo, si en tu
+  página tuvieras muchos <code>&lt;div&gt;</code> con ayuda
+  para los visitantes, y quieres que salgan todos igual, con el
+  mismo estilo, no te iría bien una hoja de estilos
+  como:</p>
+
+  <div class="ejemplo">
+    <code>div {border:2px solid black; background:yellow;}</code>
+  </div>
+
+  <p>ya que cambiaría el diseño de todos los
+  <code>&lt;div&gt;</code> de la página (aunque no sean los
+  de ayuda). Hace falta algo para elegir unos pocos elementos
+  concretos, y aplicar el estilo sólo a esos.</p>
+
+  <p>Como siempre, hay una solución elegante y sencilla que
+  no requiere copiar y pegar estilos. La solución es
+  distinta dependiendo de si hay varios elementos a los que aplicar
+  el estilo, o sólo uno.</p>
+
+  <p>Cuando tenemos varios elementos parecidos que queremos
+  agrupar, lo que hay que hacer es inventarse un nombre (nombre de
+  clase) para asignárselo a todos ellos (porque
+  pertenecerán a la misma clase). Eso se hace con el
+  atributo <code>class</code>. Por ejemplo, en todos los
+  <code>&lt;div&gt;</code> de ayuda tendremos que poner
+  <code>&lt;div class="ayuda"&gt;</code> (en los que no son de
+  ayuda, <code>&lt;div&gt;</code> sólo).</p>
+
+  <p>Entonces les podemos cambiar el estilo a todos los de la clase
+  a la vez, con el CSS. Se hace así:</p>
+
+  <div class="ejemplo">
+    <code>div.ayuda {border:2px solid black;
+    background:yellow;}</code>
+  </div>
+
+  <p>Eso quiere decir: todos los <code>&lt;div&gt;</code> que
+  pertenecen a la clase <code>ayuda</code>. También
+  podrías poner <code>.ayuda</code> para referirte a
+  cualquier elemento que pertenezca a la clase <code>ayuda</code>
+  (sea <code>&lt;div&gt;</code> o no), pero la primera forma es
+  más clara.</p>
+
+  <p>En cambio, habrá veces en las que el elemento al que
+  quieres dar estilo es único, o sea, sólo sale una
+  vez en la página. Lo puedes hacer con <code>class</code>
+  igual que antes, claro, pero si prefieres dejar constancia de que
+  el elemento es único, dale un identificador con el
+  atributo <code>id</code>; por ejemplo <code>&lt;div
+  id="titulo"&gt;</code>. No puede haber <code>id</code>s repetidos
+  ya que son únicos.</p>
+
+  <p>Luego, en la hoja de estilos, se pone:</p>
+
+  <div class="ejemplo">
+    <code>div#titulo {border:12px solid blue; background:gray;
+    color:black;}</code>
+  </div>
+
+  <p>con un <code>#</code> (<q>sostenido</q>, <q>almohadilla</q>, o
+  como quieras llamarle). Date cuenta de que el estilo se refiere a
+  un sólo elemento de la página, no a varios.
+  También podrías poner <code>#titulo</code> y se
+  aplicaría al elemento que tenga <code>id="titulo"</code>,
+  sea cual sea (en este caso es un <code>&lt;div&gt;</code>).</p>
+
+  <p>Otra forma de "seleccionar" elementos es intentar ser
+  más específico. Por ejemplo, si todos los
+  párrafos que hay dentro de un <code>&lt;div&gt;</code> son
+  especiales, en vez escribir <code>&lt;p
+  class="especial"&gt;</code> para cada párrafo, define la
+  regla CSS como <code>div p { ........... }</code>, que quiere
+  decir lo mismo (<q>todos los <code>&lt;p&gt;</code> que
+  estén dentro de un <code>&lt;div&gt;</code></q>), y pon
+  sólo <code>&lt;p&gt;</code> en cada párrafo.</p>
+
+  <p>Por cierto, ya has visto qué hace <code>class</code> e
+  <code>id</code>. Aún hay otro atributo, <code>name</code>,
+  que no hay que usar porque es lo mismo que <code>id</code>.</p>
+
+  <h3 id="type"><code>&lt;script&gt;</code> y
+  <code>&lt;style&gt;</code> requieren <code>type</code>, no
+  <code>language</code></h3>
+
+  <p>Hay que poner <code>&lt;script
+  type="text/javascript"&gt;</code>. El atributo
+  <code>language</code> no se usa (de todas formas cada uno lo
+  escribía como quería, o no lo ponía porque
+  iba igual). Lo mismo con el <code>&lt;style&gt;</code>: si es
+  CSS, pon <code>&lt;style type="text/css"&gt;</code>.</p>
+
+  <p>Esta información sí que es útil, porque
+  son tipos MIME estandarizados, no palabritas cualquiera.</p>
+
+  <h3 id="cabeceras">Las cabeceras <code>&lt;h1&gt;</code>,
+  <code>&lt;h2&gt;</code>, <code>&lt;h3&gt;</code>, ... son para
+  cabeceras</h3>
+
+  <p>No uses etiquetas de cabecera sólo porque el texto sale
+  más grande. Sirven para definir la estructura del texto, y
+  poder poner títulos de sección, subsecciones, etc.
+  Los buscadores las usan para saber de qué se habla en una
+  página, así que es importante usarlas sólo
+  para lo que se han diseñado.</p>
+
+  <p>Cuando quieras cambiar el tamaño del texto, usa el CSS
+  (propiedad <code>font-size</code>).</p>
+
+  <h3 id="no_at_body"><code>&lt;body&gt;</code> no necesita
+  atributos</h3>
+
+  <p>Los atributos como <code>topmargin</code>,
+  <code>leftmargin</code>, <code>marginheight</code>,
+  <code>marginwidth</code>, <code>background</code>,
+  <code>bgcolor</code>, <code>bgproperties</code>,
+  <code>text</code>, <code>link</code>, <code>vlink</code>,
+  <code>alink</code> son un ejemplo de lo mal que estaba Internet
+  antes de CSS. Todos ellos se aplicaban al
+  <code>&lt;body&gt;</code>, aunque algunos atributos fueron
+  inventados por cierta empresa y no funcionaban igual en todos
+  lados.</p>
+
+  <p>El caso es que todos ellos forman parte del diseño de
+  la página (márgenes, fondos, colores, ...), y lo
+  mejor es hacerlo con hojas de estilo. El
+  <code>&lt;body&gt;</code> hay que acabar escribiéndolo
+  como <code>&lt;body&gt;</code>, sin atributos (como la
+  mayoría de etiquetas en HTML).</p>
+
+  <h3 id="usa_tags">Conoce las etiquetas HTML</h3>
+
+  <p>Hay muchas etiquetas para las cosas que salen normalmente en
+  páginas web: direcciones, citas, código,
+  referencias, variables, ... ¿Conocías
+  <code>&lt;abbr&gt;</code>, <code>&lt;acronym&gt;</code>,
+  <code>&lt;address&gt;</code>, <code>&lt;bdo&gt;</code>,
+  <code>&lt;cite&gt;</code>, <code>&lt;code&gt;</code>,
+  <code>&lt;del&gt;</code>, <code>&lt;dfn&gt;</code>,
+  <code>&lt;ins&gt;</code>, <code>&lt;kbd&gt;</code>,
+  <code>&lt;q&gt;</code>, <code>&lt;samp&gt;</code> o
+  <code>&lt;var&gt;</code>?</p>
+
+  <p>Bastantes se comportan de la misma forma, pero al que lee el
+  código le sirven para entender mejor la estructura del
+  documento. También le van muy bien al diseñador,
+  que podrá aplicar estilos diferentes a cada tipo de
+  elemento sin tener que ir definiendo clases.</p>
+
+</body>
+								</div>
+							</section>
+
+					</div>
+
+				<!-- Contact -->
+					<section id="contact">
+						<div class="inner">
+							<section>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<label for="name">Name</label>
+											<input type="text" name="name" id="name" />
+										</div>
+										<div class="field half">
+											<label for="email">Email</label>
+											<input type="text" name="email" id="email" />
+										</div>
+										<div class="field">
+											<label for="message">Message</label>
+											<textarea name="message" id="message" rows="6"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send Message" class="primary" /></li>
+										<li><input type="reset" value="Clear" /></li>
+									</ul>
+								</form>
+							</section>
+							<section class="split">
+								<section>
+									<div class="contact-method">
+										<span class="icon solid alt fa-envelope"></span>
+										<h3>Email</h3>
+										<a href="mailto:programermonster@gmail.com" target="blank">programermonster@gmail.com</a>
+									</div>
+								</section>
+								<section>
+									<div class="contact-method">
+										<span class="icon solid alt fa-phone"></span>
+										<h3>Teléfono</h3>
+										<span>(+52) 33 3073 9163</span>
+									</div>
+								</section>
+							</section>
+						</div>
+					</section>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<ul class="icons">
+								<li><a href="https://www.facebook.com/Programmer-Monster-101978555675685/" target="blank" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

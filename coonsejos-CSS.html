@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>CONSEJOS-CSS</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo"><strong>Programmer</strong> <span>Monster</span></a>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<ul class="links">
+							<li><a href="index.html">Inicio</a></li>
+							<li><a href="https://www.facebook.com/Programmer-Monster-101978555675685/" target="_blank">Siguenos en Facebook</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main" class="alt">
+
+						<!-- One -->
+							<section id="one">
+								<div class="inner">
+									<header class="major">
+										<h1>Generix</h1>
+									</header>
+									<span class="image main"><img src="images/pic11.jpg" alt="" /></span>
+									<p>Como todos sabemos, la correcta utilización de CSS es fundamental para nuestros proyectos de <a href="https://introbay.com/es/blog/2015/10/20/desarrollos-web-profesionales-desarrollos-calidad" target="_blank">desarrollo web</a>. Aunque a primera vista parece fácil, el código se puede complicar en proyectos más grandes que conlleven una gran cantidad de líneas. En este artículo vamos a dar <strong>3 consejos fundamentales</strong> para que podamos mejorar la <strong>calidad de nuestro código CSS</strong>.</p>
+									<h2>1. Hacer un reset del estilo antes de empezar</h2>
+									<p>¿Qué significa esto? Bien, para entenderlo debemos de saber cómo se aplican los estilos a nuestra <a href="https://introbay.com" target="_blank">página web</a>.</p>
+									<p>¿Qué significa esto? Bien, para entenderlo debemos de saber cómo se aplican los estilos a nuestra <a href="https://introbay.com" target="_blank">página web</a>.</p>
+									<p>Cuando los navegadores muestran una página web, además de aplicar las hojas de estilo de los diseñadores, siempre aplican otras dos hojas de estilos: la del navegador y la del usuario.<p>¿Qué significa esto? Bien, para entenderlo debemos de saber cómo se aplican los estilos a nuestra <a href="https://introbay.com" target="_blank">página web</a>.</p></p>
+									<p class="rtecenter"><img alt="" src="/sites/default/files/blog/tips_para_un_correcto_desarrollo_del_css.jpg" style="height:111px; width:342px"></p>
+									<p>La hoja de estilo del navegador cuenta con ciertas propiedades preestablecidas (márgenes, tamaños de letra, etc.) que se aplicarán al contenido html por defecto en el caso de no tener una hoja de estilos creada por nosotros.</p>
+									<p>Por otro lado tenemos la hoja de estilos del usuario. A través del navegador, es posible que un usuario modifique <strong>características de las propiedades CSS</strong>, aunque rara vez se va a dar el caso.</p>
+									<p>Por último se aplican las propiedades de nuestras <a href="https://developer.mozilla.org/es/docs/Learn/Getting_started_with_the_web/CSS_basics" target="_blank">hojas de estilos</a>, por lo que son las que mayor prioridad tienen.</p>
+									<p>Aquí es cuando nos encontramos con el mayor ‘problema’ y es que cada navegador varía los valores del margin y el padding, por lo que es recomendable hacer un reset a estas dos propiedades, como mínimo.</p>
+									<p class="rtecenter"><img alt="" src="/sites/default/files/blog/tips_para_un_correcto_desarrollo_del_css_2.jpg" style="height:276px; width:430px"></p>
+									<p>El <em>‘arreglo’</em> anterior puede no ser suficiente, así que si queremos hacer un reset completo podemos recurrir a multitud de archivos que hay en internet como puede ser ‘Initializr’ o ‘Normalize’.</p>
+									<p>¡Pero cuidado!, estos archivos afectan a todo el estilo, inicializando todos los elementos a 0, lo que nos va a crear conflictos.</p>
+									<p>Entonces, ¿cúando debo usar un reset completo?</p>
+									<p>Estos tipos de reset no están mal en aquellos proyectos donde no vamos a invertir gran esfuerzo en la maquetación.</p>
+									<p>Sin embargo, en proyectos de gran envergadura, donde se va a dedicar tiempo y esfuerzo, es mejor partir de cero. Aunque en este caso sigue siendo recomendable un reset de los margin y los padding de los elementos.</p>
+									<p>Sin embargo, en proyectos de gran envergadura, donde se va a dedicar tiempo y esfuerzo, es mejor partir de cero. Aunque en este caso sigue siendo recomendable un reset de los margin y los padding de los elementos.</p>
+									<blockquote>
+<p>En proyectos de gran envergadura, donde se va a dedicar tiempo y esfuerzo, es mejor partir de cero.&nbsp;</p>
+</blockquote>
+<h2>2. Establece un buen orden para el código CSS</h2>
+<p>Ya se trabaje solo o en equipo, es muy importante que la <strong>estructura de nuestro código sea clara y ordenada</strong>. De esta manera si olvidamos el proyecto durante un tiempo, al volver nos resultará mas sencillo retomarlo y si trabajamos en equipo no le haremos la vida imposible al resto de personas que vayan a tratar nuestro código.</p>
+<p>No hay ninguna regla escrita sobre el orden del código CSS, por lo que va a depender completamente de nosotros, pero si hay varias ‘distribuciones’ que se suelen seguir.</p>
+<p>Vamos a ver cuáles son:</p>
+<ul><li><strong>Dividir por áreas de la página:</strong> Esta división estructura el código según el orden de renderizado de la página. Así, el primer bloque de estilo sería el header, el segundo va a ser el content, despúes vendrá el sidebar y por último el footer.</li>
+</ul>
+<p class="rtecenter"><img alt="" src="/sites/default/files/blog/tips_para_un_correcto_desarrollo_del_css_3.jpg" style="height:144px; width:196px"></p>
+<p class="rteindent1">Así mismo, dentro de cada área, el orden a seguir debería ser igual.</p>
+<ul><li><strong>Dividir por elementos:</strong> En este caso el código se divide por los elementos que componen el diseño. Por ejemplo, un bloque donde se definan todos los estilos de imágenes, otro para fuentes, otro para botones, iconos…</li>
+</ul>
+<p class="rtecenter"><img alt="" src="/sites/default/files/blog/tips_para_un_correcto_desarrollo_del_css_4.jpg" style="height:206px; width:349px"></p>
+<p>En relación al orden, es también de mucha importancia mantener una jerarquía en los atributos de las clases. Puede ser por orden alfabético, por tipos de selectores, etc.</p>
+<p>No importa que posibilidad elegir, lo importante es mantener la misma estructura siempre.</p>
+<h2>3. Haz uso de los comentarios</h2>
+<p>Junto con el consejo anterior, es el <strong>más importante a la hora de la organización y el mantenimiento del código CSS.</strong> La costumbre de los comentarios es de las primeras que debemos adquirir, diría que incluso antes que la del orden.</p>
+								</div>
+							</section>
+
+					</div>
+
+				<!-- Contact -->
+					<section id="contact">
+						<div class="inner">
+							<section>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<label for="name">Name</label>
+											<input type="text" name="name" id="name" />
+										</div>
+										<div class="field half">
+											<label for="email">Email</label>
+											<input type="text" name="email" id="email" />
+										</div>
+										<div class="field">
+											<label for="message">Message</label>
+											<textarea name="message" id="message" rows="6"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send Message" class="primary" /></li>
+										<li><input type="reset" value="Clear" /></li>
+									</ul>
+								</form>
+							</section>
+							<section class="split">
+								<section>
+									<div class="contact-method">
+										<span class="icon solid alt fa-envelope"></span>
+										<h3>Email</h3>
+										<a href="mailto:programermonster@gmail.com" target="blank">programermonster@gmail.com</a>
+									</div>
+								</section>
+								<section>
+									<div class="contact-method">
+										<span class="icon solid alt fa-phone"></span>
+										<h3>Teléfono</h3>
+										<span>(+52) 33 3073 9163</span>
+									</div>
+								</section>
+							</section>
+						</div>
+					</section>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<ul class="icons">
+								<li><a href="https://www.facebook.com/Programmer-Monster-101978555675685/" target="blank" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
